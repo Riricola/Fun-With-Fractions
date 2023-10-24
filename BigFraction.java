@@ -195,8 +195,8 @@ public class BigFraction {
     this.num = num.divide(gcd);
     this.denom = denom.divide(gcd);
     
-    if(this.denom == 1){
-      return this.num;
+    if(this.denom.equals(BigInteger.ONE)){
+      return this.num.toString();
     }
 
     return this.num + "/" + this.denom;
