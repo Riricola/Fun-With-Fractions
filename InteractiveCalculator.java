@@ -25,8 +25,16 @@ public class InteractiveCalculator{
     while(! userInput.equals("QUIT")){
       //keep reading lines
       
+
+      if(userInput.length() == 1){
+        result = calculator.evaluate(userInput);
+        pen.println(result.simplify());
+
+        userInput = scanner.nextLine();
+      }//if
+      
       //Checks if the user is trying to store a value
-      if(userInput.substring(0,5).equals("STORE")){ 
+       if(userInput.substring(0,5).equals("STORE")){ 
         calculator.store((userInput.substring(6,7)).charAt(0));
         userInput = scanner.nextLine();
       
