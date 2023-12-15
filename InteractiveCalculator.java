@@ -1,6 +1,6 @@
 import java.math.BigInteger;
 import java.io.PrintWriter;
-import java.util.Scanner;//took it from chat gpt
+import java.util.Scanner;
 
 /**
  * A calculator that works with fractions, integers, and characters. Repeatedly
@@ -31,7 +31,7 @@ public class InteractiveCalculator{
         pen.println(result.simplify());
 
         userInput = scanner.nextLine();
-      }//if
+      } //if
       
       //Checks if the user is trying to store a value
        if(userInput.substring(0,5).equals("STORE")){ 
@@ -43,9 +43,9 @@ public class InteractiveCalculator{
       pen.println(result.simplify());
 
       userInput = scanner.nextLine();
-      }//if
-    }//while
+      } //if
+    } //while
     pen.flush();
     scanner.close();
-  }//main
+  } //main
 } //InteractiveCalculator

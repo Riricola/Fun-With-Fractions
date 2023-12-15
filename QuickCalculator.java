@@ -15,10 +15,18 @@ public class QuickCalculator{
     BFCalculator calculator = new BFCalculator();
     BigFraction result;
 
-    for(int i = 0; i < args.length; i++){
-      String expression = args[i];
 
-      if(expression.substring(0,5).equals("STORE")){ 
+      /* Here is where I would add code to make sure it takes unfinished expressions
+      for(int i =0; i< expression.length; i++){
+        if
+      }
+      if(expression == 1){
+        */
+
+        result = calculator.evaluate(expression);
+        pen.println(result.simplify());
+
+      } else if(expression.substring(0,5).equals("STORE")){ 
         calculator.store((expression.substring(6,7)).charAt(0));
       } else{
       //print the result

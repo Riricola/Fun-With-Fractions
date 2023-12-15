@@ -33,21 +33,16 @@ public class BFCalculator {
     int base = (int) 'a';
     int maxLetter = (int) 'z';
 
-    //splits the string based on white space
+    // splits the string based on white space
     String[] expStr = exp.split(" ");
 
-    for(int i = 0; i < expStr.length; i++){
-
-    }
-
-//needa fix this to have a condition on if the user puts 1 character
     if((expStr.length == 1)){
       if((expStr[0].charAt(0) >= base)){
         return register[expStr[0].charAt(0) - base];
       } // if
 
       return new BigFraction(expStr[0]);
-    }
+    } // if
     
 
     /*loops through that checks if the exp has characters and if so
@@ -55,15 +50,14 @@ public class BFCalculator {
     * replacing the character with a BigFraction
     */
     for(int i = 0; i < expStr.length; i++){ 
-      
 
       String temp = expStr[i];
 
       //Kevin informed me of the .codePointAt() method and I figured out how to apply it here
       if((temp.codePointAt(0) >= base) && (temp.codePointAt(0) <= maxLetter)){
         expStr[i] = register[(temp.codePointAt(0)) - base].toString();
-      }//if
-    }//for
+      } // if
+    } // for
     
     //sets f1 equal to the first number
     f1 = new BigFraction(expStr[0]); 
@@ -83,14 +77,14 @@ public class BFCalculator {
         this.currentResult = f1.multiply(f2);
       } else if(operation.equals("/")){
         this.currentResult = f1.divide(f2);
-      }//if
+      } // if/else
 
       //saves the result into the first fraction, properly closing the loop
       f1 = this.currentResult;
-    }//for
+    } //for
 
     return this.currentResult;
-  }//evaluate()
+  } //evaluate()
   
 
   /* calculator.store(char reg)
@@ -112,29 +106,27 @@ public class BFCalculator {
   public boolean checker(String[] exp){
     String preVal = "none";
     String temp = "none";
-    int maxLetter = 122;
-    int base = 97;
+    int maxLetter = (int) 'z';
+    int base = (int) 'a';
     for(int i = 0; i < exp.length - 1; i++){
       int j = exp[i].charAt(0);
       if(((j >= base) && (j <= maxLetter)) || (Character.isDigit(exp[i].charAt(0)))){
         temp = "number";
         if(temp.equals(preVal)){
           return false;
-        }
-        else{
+        } else{
           preVal = "number";
-        }//else
+        } // if/ else
       }//if
       if((exp[i].charAt(0) == '+') || (exp[i].charAt(0) == '-') || (exp[i].charAt(0) == '*') || (exp[i].charAt(0) == '/')){
         temp = "operation";
         if(temp.equals(preVal)){
           return false;
-        }
-        else{
+        } else{
           preVal = "operation";
-        }
-      }
-    }
+        } // if else
+      } // if
+    } // for
 
     return true;
   }//checker
